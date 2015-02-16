@@ -7,5 +7,5 @@ input iterators with an 'operator bool() const' for detecting the end of data.
 We assume data generated via algorithms or database queries is immutable and is just
 waiting to be enumerated. 
 
-Instead of duck typing we use the <a href="http://en.wikipedia.org/wiki/Non-virtual_interface_pattern">NVI idiom</a>
+Instead of duck typing we use the [NVI idiom](http://en.wikipedia.org/wiki/Non-virtual_interface_pattern)
 to express a few common algorithms that are handy for dealing with tick data.
