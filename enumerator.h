@@ -282,14 +282,14 @@ inline pair_enumerator<I,J> make_pair_enumerator(I& i, J& j)
 
 template<class T>
 class enumerator_sequence : public enumerator_base<T> {
-	T i, b, e, s;
+	T i, b, s, e;
 public:
-	enumerator_sequence(const T& b = 0, const T& e = std::numeric_limits<T>::max(); const T& s = 1)
-		: i(b), b(b), e(e), s(s)
+	enumerator_sequence(const T& b = 0, const T& s = 1, const T& e = std::numeric_limits<T>::max())
+		: i(b), b(b), s(s), e(e)
 	{ }
 	bool operator==(const enumerator_sequence& i_) const
 	{
-		return i == i_.i && b == i_.b && e == i_.e && s == i_.s;
+		return i == i_.i && b == i_.b && s == i_.s && e == i_.e;
 	}
 	bool operator!=(const enumerator_sequence& i_) const
 	{
@@ -334,6 +334,22 @@ inline enumerator_sequence<T> sequence(const T& b = 0, const T& e = std::numeric
 {
 	return enumerator_sequence<T>(b, e, s);
 }
+
+#ifdef _DEBUG
+
+void test_enumerator_sequence()
+{
+	enumerator_sequence<int> i(1,2), i2;
+	i2 = i;
+	assert (i2 == i);
+	auto i3(i);
+	assert (i3 == i);
+
+	assert (*i == 1);
+	assert (*++i == 3);
+}
+
+#endif // _DEBUG
 
 #if 0
 template<class U, class T>

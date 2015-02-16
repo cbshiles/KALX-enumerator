@@ -45,19 +45,6 @@ void test_enumerator()
 	assert (*++i == 3);
 	assert (!++i);
 }
-/*
-void test_enumerator_sequence()
-{
-	enumerator_sequence<int> i(1,2), i2;
-	i2 = i;
-	assert (i2 == i);
-	auto i3(i);
-	assert (i3 == i);
-
-	assert (*i == 1);
-	assert (*++i == 3);
-}
-*/
 void test_apply_enumerator()
 {
 	std::vector<int> a = {1,2,3};
@@ -96,7 +83,7 @@ int main()
 	test_drop();
 	test_take();
 
-//	test_enumerator_sequence();
+	test_enumerator_sequence();
 
 	test_apply_enumerator();
 	test_concatenate_enumerator();
